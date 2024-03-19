@@ -11,7 +11,7 @@ let dynamicData = ref()
 
 onMounted(() => {
   getStaticData()
-  //   getDynamicData()
+  getDynamicData()
 })
 
 const getStaticData = function () {
