@@ -9,6 +9,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
+  /* 插件安装 */
   plugins: [
     vue(),
     VueDevTools(),
@@ -19,9 +20,18 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     })
   ],
+  /*  */
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  /* css预处理配置 */
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/styles/reset.scss";'
+      }
     }
   }
 })
