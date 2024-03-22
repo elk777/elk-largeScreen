@@ -1,50 +1,194 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* 文字风格 Sans-serif 各笔画粗细相同，Serif 笔画粗细不同，monospace 等宽体，cursive草书，fantasy梦幻 */
+  font-family: 'Microsoft YaHei', sans-serif, 'Helvetica Neue', Helvetica, Arial, '黑体', '宋体',
+    Arial;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  position: relative;
+}
+
+body {
+  font-size: 14px;
+  color: #333;
+  // background: url(@/assets/images/bg.png);
+  // background-size: 100% 100%;
+  padding-right: 0px !important;
+}
+
+/* 重置各标签的默认样式 */
+a,
 body,
-ul,
-ol,
-li,
-p,
+center,
+cite,
+code,
+dd,
+del,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-form,
-fieldset,
-table,
-td,
+header,
+hr,
+html,
 img,
-div {
-  margin: 0px;
-  padding: 0px;
-  border-width: 0px;
-  border-style: initial;
-  border-color: initial;
-  border-image: initial;
-  list-style-type: none;
-}
-* {
-  outline: none;
+input,
+label,
+legend,
+li,
+mark,
+ol,
+p,
+section,
+span,
+textarea,
+time,
+td,
+th,
+ul {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-style: normal;
   box-sizing: border-box;
-}
-br {
-  user-select: none;
+  /*  自动换行 */
+  word-wrap: break-word;
+  /*  强制英文单词断行 */
+  word-break: break-all;
 }
 
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+/*  设置标签为块级分类 */
+article,
+aside,
+details,
+fieldset,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+/* 去除input标签的默认样式 */
+button,
+input,
+textarea {
+  -webkit-appearance: none;
+  font-family: 'Microsoft YaHei', sans-serif, 'Helvetica Neue', Helvetica, Arial, '黑体', '宋体',
+    Arial;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1em;
+  outline: none;
+  background-color: transparent;
+}
+
+/*  禁止多文本框手动拖动大小 */
+textarea {
+  resize: none;
+  -webkit-appearance: none;
+}
+
+/* 去掉按下的阴影盒子 */
+input,
+textarea,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*  清除a标签下划线 */
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:focus,
+a:active,
+a:hover {
+  outline: none;
+}
+
+/*  清除列表前面的点 */
+ol,
+li,
+ul {
+  list-style: none;
+}
+
+/*  清除IE下图片的边框 */
+img {
+  border-style: none;
+  font-size: 0;
+}
+
+/*  解决chrome浏览器默认黄色背景问题 */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
+/*  设置默认滚动条样式 */
+::-webkit-input-placeholder {
+  color: #afbdcc;
+}
+
+:-moz-placeholder {
+  color: #afbdcc;
+}
+
+::-moz-placeholder {
+  color: #afbdcc;
+}
+
+:-ms-input-placeholder {
+  color: #afbdcc;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 8px;
-  background-color: transparent;
-}
-/*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: transparent;
+  /* width: 6px;
+  height: 6px; */
 }
 
-/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+}
+
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #9a9899;
+  background-color: #cccccc;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #f5f5f5;
+}
+
+::-webkit-resizer {
+  background-repeat: no-repeat;
+  background-position: bottom right;
 }

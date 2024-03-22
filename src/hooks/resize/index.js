@@ -2,7 +2,7 @@
  * @Author: elk LYF_elk@163.com
  * @Date: 2024-03-20 16:51:23
  * @LastEditors: elk LYF_elk@163.com
- * @LastEditTime: 2024-03-20 22:10:47
+ * @LastEditTime: 2024-03-21 17:15:07
  * @FilePath: /vue-BigScreen/src/hooks/resize/index.js
  * @Description: 屏幕缩放hooks函数
  */
@@ -14,9 +14,10 @@ export const height = 1080
 
 export const useResize = (options = {}) => {
   const { w = width, h = height, fullScreen = false, delay = 100 } = options
-  const screenRef = ref(),
-    scale = ref(1)
+  const scale = ref(1)
 
+  const body = document.body
+  // const html = document.documentElement
   /* 
     resize函数
         1、获取浏览器宽高
@@ -31,8 +32,8 @@ export const useResize = (options = {}) => {
         6、onBeforeUnmount 移除方法
    */
   function resize() {
-    const clientWidth = document.body.clientWidth,
-      clientHeight = document.body.clientHeight,
+    const clientWidth = document.documentElement.clientWidth || document.body.clientWidth,
+      clientHeight = document.documentElement.clientHeight || document.body.clientHeight,
       scaleW = clientWidth / w,
       scaleH = clientHeight / h
 
@@ -42,21 +43,17 @@ export const useResize = (options = {}) => {
       scale.value = scaleW
     }
     if (fullScreen) {
-      screenRef.value.style.transform = `scale(${scaleW},${scaleH})`
+      body.style.transform = `scale(${scaleW},${scaleH})`
     } else {
-      screenRef.value.style.transform = 'scale(' + scale.value + ')'
+      body.style.transform = 'scale(' + scale.value + ')'
     }
-    console.log('触发', screenRef.value.style.transform)
   }
   onMounted(() => {
-    console.log('onMounted', screenRef.value)
-    if (screenRef.value) {
-      resize()
-      window.addEventListener('resize', resize)
-    }
+    resize()
+    window.addEventListener('resize', resize)
   })
   onBeforeUnmount(() => {
+    console.log('实例卸载了吗....')
     window.removeEventListener('resize', resize)
   })
-  return { scale, screenRef }
 }

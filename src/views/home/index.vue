@@ -1,14 +1,22 @@
 <template>
-  <div ref="screenRef" class="home-container pub-flex">
+  <div class="home-container pub-flex">
     <!-- 三列布局 -->
     <div class="home-left">
       <el-row class="h50">
-        <el-col :span="12" class="left-bg">1</el-col>
-        <el-col :span="12" class="left-bg">2</el-col>
+        <el-col :span="12" class="left-bg">
+          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
+        <el-col :span="12" class="right-bg">
+          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
       </el-row>
       <el-row class="h50">
-        <el-col :span="12" class="left-bg">3</el-col>
-        <el-col :span="12" class="left-bg">4</el-col>
+        <el-col :span="12" class="left-bg">
+          <chart-view :chart-option="lineOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
+        <el-col :span="12" class="right-bg">
+          <chart-view :chart-option="pieOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
       </el-row>
     </div>
     <div class="home-middle">
@@ -16,45 +24,45 @@
     </div>
     <div class="home-right">
       <el-row class="h50">
-        <el-col :span="12" class="right-bg">5</el-col>
-        <el-col :span="12" class="right-bg">6</el-col>
+        <el-col :span="12" class="left-bg">
+          <chart-view :chart-option="lineOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
+        <el-col :span="12" class="right-bg">
+          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
       </el-row>
       <el-row class="h50">
-        <el-col :span="12" class="right-bg">7</el-col>
-        <el-col :span="12" class="right-bg">8</el-col>
+        <el-col :span="12" class="left-bg">
+          <chart-view :chart-option="pieOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
+        <el-col :span="12" class="right-bg">
+          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
+        </el-col>
       </el-row>
     </div>
   </div>
 </template>
 
 <script setup>
-import { getStatic, getDynamic } from '@/apis/video/index'
+// import { getStatic, getDynamic } from '@/apis/video/index'
 import { ref, onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
+// let staticData = ref()
+// let dynamicData = ref()
+import barConfig from '@/components/Chart/options/bar'
+import lineConfig from '@/components/Chart/options/line'
+import pieConfig from '@/components/Chart/options/pie'
+
 import { useResize } from '@/hooks/resize/index'
+useResize()
 
-const { screenRef } = storeToRefs(useResize())
-
-let staticData = ref()
-let dynamicData = ref()
+let barOpt = ref(barConfig())
+let lineOpt = ref(lineConfig())
+let pieOpt = ref(pieConfig())
 
 onMounted(() => {
   // getStaticData()
   // getDynamicData()
 })
-
-const getStaticData = function () {
-  getStatic().then((res) => {
-    console.log('getStatic', res)
-    staticData.value = res
-  })
-}
-const getDynamicData = function () {
-  getDynamic().then((res) => {
-    console.log('getDynamic', res)
-    dynamicData.value = res
-  })
-}
 </script>
 
 <style lang="scss" scoped>
@@ -63,11 +71,19 @@ const getDynamicData = function () {
   justify-content: center;
   align-items: center;
 }
+.el-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .h50 {
   height: 50%;
 }
 .home-container {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   background: url(../../assets/images/bg.png);
   background-size: 100% 100%;
   .home-left {

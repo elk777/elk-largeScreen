@@ -10,14 +10,23 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about'
+      path: '/layout',
+      name: 'layout',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      // component: () => import('../views/AboutView.vue')
+      component: () => import('../views/layout/index.vue')
     }
   ]
+})
+router.beforeEach((to, from, next) => {
+  let path = to.path
+  if (path === '/layout') {
+    const body = document.body
+    console.log('body', body)
+    body.style = ''
+  }
+  next()
 })
 
 export default router
