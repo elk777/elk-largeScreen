@@ -13,3 +13,4 @@ let chart = ref(null)
 chart.value = markRaw(echarts.init(chart.value))
 ```
 
+2、vue3中在<style scoped>导致echarts检测不到父容器的大小，导致尺寸自适应失效

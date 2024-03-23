@@ -2,84 +2,51 @@
   <div class="home-container pub-flex">
     <!-- 三列布局 -->
     <div class="home-left">
-      <el-row class="h50">
-        <el-col :span="12" class="left-bg">
-          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-        <el-col :span="12" class="right-bg">
-          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-      </el-row>
-      <el-row class="h50">
-        <el-col :span="12" class="left-bg">
-          <chart-view :chart-option="lineOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-        <el-col :span="12" class="right-bg">
-          <chart-view :chart-option="pieOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-      </el-row>
+      <cathet-view :cathetData="chartLeft"></cathet-view>
     </div>
     <div class="home-middle">
-      <video src=""></video>
+      <middle-view></middle-view>
     </div>
     <div class="home-right">
-      <el-row class="h50">
-        <el-col :span="12" class="left-bg">
-          <chart-view :chart-option="lineOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-        <el-col :span="12" class="right-bg">
-          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-      </el-row>
-      <el-row class="h50">
-        <el-col :span="12" class="left-bg">
-          <chart-view :chart-option="pieOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-        <el-col :span="12" class="right-bg">
-          <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-        </el-col>
-      </el-row>
+      <cathet-view :cathetData="chartRight"></cathet-view>
     </div>
   </div>
 </template>
 
 <script setup>
-// import { getStatic, getDynamic } from '@/apis/video/index'
 import { ref, onMounted } from 'vue'
-// let staticData = ref()
-// let dynamicData = ref()
-import barConfig from '@/components/Chart/options/bar'
-import lineConfig from '@/components/Chart/options/line'
-import pieConfig from '@/components/Chart/options/pie'
+import cathetView from './components/cathet/index.vue'
+import middleView from './components/middle/index.vue'
 
+import DTOchartData from '@/mock/table.json'
+
+// 开启缩放功能
 import { useResize } from '@/hooks/resize/index'
 useResize()
 
-let barOpt = ref(barConfig())
-let lineOpt = ref(lineConfig())
-let pieOpt = ref(pieConfig())
+const chartLeft = ref([])
+const chartRight = ref([])
+
+const getChartData = () => {
+  const { code, data } = DTOchartData
+  if (code === 200) {
+    chartLeft.value = data[0].tchildren
+    chartRight.value = data[2].tchildren
+    // console.log('chartData', chartLeft.value)
+  }
+}
 
 onMounted(() => {
-  // getStaticData()
-  // getDynamicData()
+  getChartData()
+  // console.log('chartData', chartLeft.value)
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .pub-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.el-col {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.h50 {
-  height: 50%;
 }
 .home-container {
   height: 100%;
@@ -100,15 +67,6 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     flex: 0.3;
-  }
-
-  .left-bg {
-    background: url(../../assets/images/kuang.png);
-    background-size: 100% 100%;
-  }
-  .right-bg {
-    background: url(../../assets/images/kuang2.png);
-    background-size: 100% 100%;
   }
 }
 </style>

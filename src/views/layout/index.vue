@@ -2,7 +2,7 @@
  * @Author: elk LYF_elk@163.com
  * @Date: 2024-03-21 16:02:43
  * @LastEditors: elk LYF_elk@163.com
- * @LastEditTime: 2024-03-21 20:24:53
+ * @LastEditTime: 2024-03-23 20:41:24
  * @FilePath: /vue-BigScreen/src/views/layout/index.vue
  * @Description: 布局配置界面
 -->
@@ -19,9 +19,9 @@
           <el-tab-pane label="表格布局" name="first">
             <table-layout></table-layout>
           </el-tab-pane>
-          <el-tab-pane label="Config" name="second">Config</el-tab-pane>
-          <el-tab-pane label="Role" name="third">Role</el-tab-pane>
-          <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+          <el-tab-pane label="布局2" name="second">布局2</el-tab-pane>
+          <el-tab-pane label="布局3" name="third">布局3</el-tab-pane>
+          <el-tab-pane label="布局4" name="fourth">布局4</el-tab-pane>
         </el-tabs>
       </el-card>
     </div>

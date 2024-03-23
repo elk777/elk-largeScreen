@@ -1,0 +1,103 @@
+{
+  "code": 200,
+  "msg": "获取成功",
+  "data": [
+    {
+      "tid": 1,
+      "tname": "左侧布局",
+      "tlabel": "left",
+      "tnumber": "0",
+      "tchildren": [
+        {
+          "tid": 11,
+          "tname": "各行业数量",
+          "tlocation": "1-1",
+          "ttype": "bar",
+          "tlabel": "hangye",
+          "tdata": ["2021", "ly"]
+        },
+        {
+          "tid": 12,
+          "tname": "薪资幅度",
+          "tlocation": "1-2",
+          "ttype": "line",
+          "tlabel": "xinzi",
+          "tdata": [
+            "web",
+            "web-1",
+            "web-2",
+            "web-3",
+            "java",
+            "java-1",
+            "java-2",
+            "java-3",
+            "java-4"
+          ]
+        },
+        {
+          "tid": 13,
+          "tname": "年龄分布",
+          "tlocation": "2-1",
+          "ttype": "pie",
+          "tlabel": "nianling",
+          "tdata": ["18", "28", "38", "48", "49"]
+        },
+        {
+          "tid": 14,
+          "tname": "各地区占比",
+          "tlocation": "2-2",
+          "ttype": "pie",
+          "tlabel": "diqu",
+          "tdata": []
+        }
+      ]
+    },
+    {
+      "tid": 2,
+      "tname": "中间布局",
+      "tlabel": "center",
+      "tnumber": "1",
+      "tchildren": []
+    },
+    {
+      "tid": 3,
+      "tname": "右侧布局",
+      "tlabel": "right",
+      "tnumber": "2",
+      "tchildren": [
+        {
+          "tid": 31,
+          "tname": "开发技能",
+          "tlocation": "1-1",
+          "ttype": "pie",
+          "tlabel": "jineng",
+          "tdata": []
+        },
+        {
+          "tid": 32,
+          "tname": "学习变化",
+          "tlocation": "1-2",
+          "ttype": "line",
+          "tlabel": "xuexi",
+          "tdata": []
+        },
+        {
+          "tid": 33,
+          "tname": "岗位需求",
+          "tlocation": "2-1",
+          "ttype": "line",
+          "tlabel": "gangwei",
+          "tdata": []
+        },
+        {
+          "tid": 34,
+          "tname": "学历需求占比",
+          "tlocation": "2-2",
+          "ttype": "pie",
+          "tlabel": "xueli",
+          "tdata": []
+        }
+      ]
+    }
+  ]
+}
