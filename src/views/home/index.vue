@@ -32,13 +32,11 @@ const getChartData = () => {
   if (code === 200) {
     chartLeft.value = data[0].tchildren
     chartRight.value = data[2].tchildren
-    // console.log('chartData', chartLeft.value)
   }
 }
-
+getChartData()
 onMounted(() => {
-  getChartData()
-  // console.log('chartData', chartLeft.value)
+  // 获取图表数据
 })
 </script>
 

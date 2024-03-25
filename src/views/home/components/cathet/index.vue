@@ -1,17 +1,14 @@
 <template>
   <el-row class="h50">
-    <el-col :span="12" class="left-bg">
-      <chart-view :chart-option="lineOpt" :auto-resize="true" :height="'100%'"></chart-view>
-    </el-col>
-    <el-col :span="12" class="right-bg">
-      <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-    </el-col>
-    <el-col :span="12" class="left-bg">
-      <chart-view :chart-option="pieOpt" :auto-resize="true" :height="'100%'"></chart-view>
-    </el-col>
-    <el-col :span="12" class="right-bg">
-      <chart-view :chart-option="barOpt" :auto-resize="true" :height="'100%'"></chart-view>
-    </el-col>
+    <template v-for="(item, index) in cathetData" :key="index">
+      <el-col :span="12" :class="formatClass(index)">
+        <chart-view
+          :chart-option="formatOpt(item)"
+          :auto-resize="true"
+          :height="'100%'"
+        ></chart-view>
+      </el-col>
+    </template>
   </el-row>
 </template>
 
@@ -19,11 +16,11 @@
 import barConfig from '@/components/Chart/options/bar'
 import lineConfig from '@/components/Chart/options/line'
 import pieConfig from '@/components/Chart/options/pie'
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, onMounted, computed } from 'vue'
 
-let barOpt = ref(barConfig())
-let lineOpt = ref(lineConfig())
-let pieOpt = ref(pieConfig())
+let barOpt = ref()
+let lineOpt = ref()
+let pieOpt = ref()
 
 const props = defineProps({
   cathetData: {
@@ -31,8 +28,25 @@ const props = defineProps({
     required: true
   }
 })
-console.log('cathetData', props.cathetData)
-// const chartOpt = ref(props.chartOpts)
+const formatClass = computed(() => {
+  return (index) => {
+    return index % 2 === 0 ? 'left-bg' : 'right-bg'
+  }
+})
+const formatOpt = computed(() => {
+  return (item) => {
+    switch (item.ttype) {
+      case 'bar':
+        return (barOpt.value = barConfig(item.tdata))
+      case 'line':
+        return (lineOpt.value = lineConfig(item.tdata))
+      case 'pie':
+        return (pieOpt.value = pieConfig())
+      default:
+        break
+    }
+  }
+})
 </script>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
  * @Author: elk 
  * @Date: 2024-03-20 21:05:51
  * @LastEditors: elk LYF_elk@163.com
- * @LastEditTime: 2024-03-23 19:53:56
+ * @LastEditTime: 2024-03-25 16:28:25
  * @FilePath: /vue-BigScreen/src/components/Chart/index.vue
  * @Description:echart组件的封装
 -->
@@ -40,6 +40,8 @@ const props = defineProps({
     required: true
   }
 })
+
+// console.log('props', props.chartOption)
 /* 监听数据变化 */
 watch(
   () => props.chartOption,
