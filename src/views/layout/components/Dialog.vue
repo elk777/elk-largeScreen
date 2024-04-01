@@ -1,14 +1,14 @@
 <template>
   <el-dialog v-model="dialogVisible" title="修改配置" width="500">
-    <el-form :model="form">
+    <el-form v-loading="loading" :model="form">
       <el-form-item label="标题">
-        <el-input v-model="form.tname" placeholder="请输入标题"></el-input>
+        <el-input v-model="form.name" placeholder="请输入标题"></el-input>
       </el-form-item>
       <el-form-item label="位置">
-        <el-input :disabled="true" v-model="form.tlocation" placeholder="请输入位置"></el-input>
+        <el-input :disabled="true" v-model="form.location" placeholder="请输入位置"></el-input>
       </el-form-item>
       <el-form-item label="类型">
-        <el-select :disabled="true" v-model="form.ttype" placeholder="请选择类型">
+        <el-select :disabled="true" v-model="form.type" placeholder="请选择类型">
           <el-option
             v-for="item in types"
             :key="item.value"
@@ -20,7 +20,7 @@
       <el-form-item label="数据展示">
         <el-cascader
           :options="options"
-          v-model="form.tdata"
+          v-model="form.data"
           :props="{ multiple: true }"
           collapse-tags
         ></el-cascader>
@@ -36,14 +36,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps, defineModel } from 'vue'
-import cascaderView from '@/components/Cascader/index.vue'
-import DTOchartData from '@/mock/table.json'
-const chartData = JSON.parse(JSON.stringify(DTOchartData.data))
+import { ref, onMounted, defineProps, defineModel, defineEmits } from 'vue'
+import DTOchartData from '@/mock/server.json'
 
-import hangye from '@/mock/source/hangye.json'
-import xinzi from '@/mock/source/xinzi.json'
-import nianling from '@/mock/source/nianling.json'
+import { updateTable, getTableDetails } from '@/apis/layout/table'
+import { ElMessage } from 'element-plus'
 
 const types = [
   {
@@ -63,6 +60,7 @@ const types = [
 const dialogVisible = defineModel()
 
 const options = ref([])
+const loading = ref(false)
 
 const props = defineProps({
   rowId: {
@@ -70,51 +68,42 @@ const props = defineProps({
     required: true
   }
 })
+const emit = defineEmits(['getList'])
 const rowId = props.rowId
 
 let form = ref({
-  tname: '',
-  tlocation: '',
-  ttype: '',
-  tdata: ''
+  name: '',
+  location: '',
+  type: '',
+  data: ''
 })
 
 onMounted(() => {
-  form.value = fillterChartData()
+  getChartData(rowId)
 })
-/* 虚拟根据id进行请求拿到列数据 */
-const fillterChartData = () => {
-  for (const item of chartData) {
-    if (item.tid === rowId) {
-      return item
-    }
-    if (item.tchildren && item.tchildren.length > 0) {
-      const childResult = item.tchildren.find((child) => child.tid === rowId)
-      if (childResult !== undefined) {
-        fillterDataSource(childResult.tlabel)
-        return childResult
-      }
-    }
-  }
+/* 根据id进行请求拿到行数据 */
+const getChartData = (id) => {
+  loading.value = true
+  getTableDetails(id).then((res) => {
+    loading.value = false
+    getOptions(res.label)
+    form.value = res
+  })
 }
-
-const fillterDataSource = (label) => {
-  console.log('fillterDataSource', label)
-  switch (label) {
-    case 'hangye':
-      options.value = hangye.data
-      break
-    case 'xinzi':
-      options.value = xinzi.data
-      break
-    case 'nianling':
-      options.value = nianling.data
-      break
-  }
+/* 根据label获取对应options */
+const getOptions = (label) => {
+  options.value = DTOchartData.source[label].data
 }
 
 const onSubmit = () => {
-  console.log('点击提交', form)
+  updateTable(form.value).then(() => {
+    ElMessage({
+      message: '修改成功',
+      type: 'success'
+    })
+    onCancel()
+    emit('getList')
+  })
 }
 const onCancel = () => {
   dialogVisible.value = false

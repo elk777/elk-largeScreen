@@ -1,13 +1,24 @@
 <template>
-  <el-row class="h50">
-    <template v-for="(item, index) in cathetData" :key="index">
-      <el-col :span="12" :class="formatClass(index)">
-        <chart-view
-          :chart-option="formatOpt(item)"
-          :auto-resize="true"
-          :height="'100%'"
-        ></chart-view>
-      </el-col>
+  <el-row class="h33">
+    <template v-if="cathetData.length > 0">
+      <template v-for="(item, index) in cathetData" :key="index">
+        <el-col :span="24" :class="formatClass">
+          <chart-view
+            v-if="!isEmptyObject(item.data)"
+            :chart-option="formatOpt(item)"
+            :auto-resize="true"
+            :height="'100%'"
+          ></chart-view>
+          <div v-else class="chart-msg">暂无数据展示</div>
+        </el-col>
+      </template>
+    </template>
+    <template v-else>
+      <template v-for="(item, index) in 3" :key="index">
+        <el-col :span="24" :class="formatClass">
+          <div class="chart-msg">暂无数据展示</div>
+        </el-col>
+      </template>
     </template>
   </el-row>
 </template>
@@ -16,7 +27,8 @@
 import barConfig from '@/components/Chart/options/bar'
 import lineConfig from '@/components/Chart/options/line'
 import pieConfig from '@/components/Chart/options/pie'
-import { ref, defineProps, onMounted, computed } from 'vue'
+import { ref, defineProps, computed } from 'vue'
+import { isEmptyObject } from '@/utils/utils'
 
 let barOpt = ref()
 let lineOpt = ref()
@@ -26,22 +38,25 @@ const props = defineProps({
   cathetData: {
     type: Array,
     required: true
+  },
+  site: {
+    type: String,
+    required: true
   }
 })
 const formatClass = computed(() => {
-  return (index) => {
-    return index % 2 === 0 ? 'left-bg' : 'right-bg'
-  }
+  const { site } = props
+  return site === 'left' ? 'left-bg' : 'right-bg'
 })
 const formatOpt = computed(() => {
   return (item) => {
-    switch (item.ttype) {
+    switch (item.type) {
       case 'bar':
-        return (barOpt.value = barConfig(item.tdata))
+        return (barOpt.value = barConfig(item.data))
       case 'line':
-        return (lineOpt.value = lineConfig(item.tdata))
+        return (lineOpt.value = lineConfig(item.data))
       case 'pie':
-        return (pieOpt.value = pieConfig())
+        return (pieOpt.value = pieConfig(item.data))
       default:
         break
     }
@@ -57,8 +72,8 @@ const formatOpt = computed(() => {
   justify-content: center;
   align-items: center;
 }
-.h50 {
-  height: 50%;
+.h33 {
+  height: 33.33%;
 }
 .left-bg {
   background: url(@/assets/images/kuang.png);
@@ -67,5 +82,9 @@ const formatOpt = computed(() => {
 .right-bg {
   background: url(@/assets/images/kuang2.png);
   background-size: 100% 100%;
+}
+.chart-msg {
+  font-size: 24px;
+  color: #fff;
 }
 </style>

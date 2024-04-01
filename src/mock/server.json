@@ -1,0 +1,629 @@
+{
+  "table": [
+    {
+      "id": 1,
+      "name": "左侧布局",
+      "label": "left",
+      "number": "0"
+    },
+    {
+      "id": 11,
+      "superId": 1,
+      "name": "各行业数量",
+      "location": "1-1",
+      "type": "bar",
+      "label": "industry",
+      "data": [
+        ["2021", "jy"],
+        ["2021", "yx"],
+        ["2021", "ds"],
+        ["2021", "jr"],
+        ["2021", "yl"]
+      ]
+    },
+    {
+      "id": 12,
+      "superId": 1,
+      "name": "薪资幅度",
+      "location": "1-2",
+      "type": "line",
+      "label": "pay",
+      "data": [
+        "web",
+        "web-1",
+        "web-2",
+        "web-3",
+        "web-4",
+        "web-5",
+        "java",
+        "java-1",
+        "java-2",
+        "java-3",
+        "java-4",
+        "java-5"
+      ]
+    },
+    {
+      "id": 13,
+      "superId": 1,
+      "name": "年龄分布",
+      "location": "2-1",
+      "type": "pie",
+      "label": "age",
+      "data": ["18", "28", "38", "48", "49"]
+    },
+    {
+      "id": 14,
+      "superId": 1,
+      "name": "各地区占比",
+      "location": "2-2",
+      "type": "pie",
+      "label": "region",
+      "data": []
+    },
+    {
+      "id": 2,
+      "name": "中间布局",
+      "label": "center",
+      "number": "1"
+    },
+    {
+      "id": 3,
+      "name": "右侧布局",
+      "label": "right",
+      "number": "2"
+    },
+    {
+      "id": 31,
+      "superId": 3,
+      "name": "开发技能",
+      "location": "1-1",
+      "type": "pie",
+      "label": "jineng",
+      "data": []
+    },
+    {
+      "id": 32,
+      "superId": 3,
+      "name": "学习变化",
+      "location": "1-2",
+      "type": "line",
+      "label": "xuexi",
+      "data": []
+    },
+    {
+      "id": 33,
+      "superId": 3,
+      "name": "岗位需求",
+      "location": "2-1",
+      "type": "line",
+      "label": "gangwei",
+      "data": []
+    },
+    {
+      "id": 34,
+      "superId": 3,
+      "name": "学历需求占比",
+      "location": "2-2",
+      "type": "pie",
+      "label": "xueli",
+      "data": []
+    }
+  ],
+  "source": {
+    "industry": {
+      "code": 200,
+      "msg": "行业信息获取成功",
+      "data": [
+        {
+          "id": 1,
+          "label": "2021年",
+          "value": "2021",
+          "children": [
+            {
+              "id": 11,
+              "label": "旅游行业",
+              "value": "ly",
+              "data": "200"
+            },
+            {
+              "id": 12,
+              "label": "教育行业",
+              "value": "jy",
+              "data": "300"
+            },
+            {
+              "id": 13,
+              "label": "游戏行业",
+              "value": "yx",
+              "data": "100"
+            },
+            {
+              "id": 14,
+              "label": "医疗行业",
+              "value": "yl",
+              "data": "300"
+            },
+            {
+              "id": 15,
+              "label": "电商行业",
+              "value": "ds",
+              "data": "500"
+            },
+            {
+              "id": 16,
+              "label": "金融行业",
+              "value": "jr",
+              "data": "300"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "label": "2022年",
+          "value": "2022",
+          "children": [
+            {
+              "id": 21,
+              "label": "旅游行业",
+              "value": "ly",
+              "data": "200"
+            },
+            {
+              "id": 22,
+              "label": "教育行业",
+              "value": "jy",
+              "data": "300"
+            },
+            {
+              "id": 23,
+              "label": "游戏行业",
+              "value": "yx",
+              "data": "100"
+            },
+            {
+              "id": 24,
+              "label": "医疗行业",
+              "value": "yl",
+              "data": "300"
+            },
+            {
+              "id": 25,
+              "label": "电商行业",
+              "value": "ds",
+              "data": "500"
+            },
+            {
+              "id": 26,
+              "label": "金融行业",
+              "value": "jr",
+              "data": "300"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "label": "2023年",
+          "value": "2023",
+          "children": [
+            {
+              "id": 31,
+              "label": "旅游行业",
+              "value": "ly",
+              "data": "200"
+            },
+            {
+              "id": 32,
+              "label": "教育行业",
+              "value": "jy",
+              "data": "300"
+            },
+            {
+              "id": 33,
+              "label": "游戏行业",
+              "value": "yx",
+              "data": "100"
+            },
+            {
+              "id": 34,
+              "label": "医疗行业",
+              "value": "yl",
+              "data": "300"
+            },
+            {
+              "id": 35,
+              "label": "电商行业",
+              "value": "ds",
+              "data": "500"
+            },
+            {
+              "id": 36,
+              "label": "金融行业",
+              "value": "jr",
+              "data": "300"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "label": "2024年",
+          "value": "2024",
+          "children": [
+            {
+              "id": 41,
+              "label": "旅游行业",
+              "value": "ly",
+              "data": "200"
+            },
+            {
+              "id": 42,
+              "label": "教育行业",
+              "value": "jy",
+              "data": "300"
+            },
+            {
+              "id": 43,
+              "label": "游戏行业",
+              "value": "yx",
+              "data": "100"
+            },
+            {
+              "id": 44,
+              "label": "医疗行业",
+              "value": "yl",
+              "data": "300"
+            },
+            {
+              "id": 45,
+              "label": "电商行业",
+              "value": "ds",
+              "data": "500"
+            },
+            {
+              "id": 46,
+              "label": "金融行业",
+              "value": "jr",
+              "data": "300"
+            }
+          ]
+        }
+      ]
+    },
+    "pay": {
+      "code": 200,
+      "msg": "薪资信息获取成功",
+      "data": [
+        {
+          "id": 1,
+          "label": "前端",
+          "value": "web",
+          "children": [
+            {
+              "id": 11,
+              "label": "1年",
+              "value": "web-1",
+              "data": "8000"
+            },
+            {
+              "id": 12,
+              "label": "2年",
+              "value": "web-2",
+              "data": "10000"
+            },
+            {
+              "id": 13,
+              "label": "3年",
+              "value": "web-3",
+              "data": "12000"
+            },
+            {
+              "id": 14,
+              "label": "4年",
+              "value": "web-4",
+              "data": "15000"
+            },
+            {
+              "id": 15,
+              "label": "5年",
+              "value": "web-5",
+              "data": "18000"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "label": "后端",
+          "value": "java",
+          "children": [
+            {
+              "id": 21,
+              "label": "1年",
+              "value": "java-1",
+              "data": "8000"
+            },
+            {
+              "id": 22,
+              "label": "2年",
+              "value": "java-2",
+              "data": "10000"
+            },
+            {
+              "id": 23,
+              "label": "3年",
+              "value": "java-3",
+              "data": "12000"
+            },
+            {
+              "id": 24,
+              "label": "4年",
+              "value": "java-4",
+              "data": "15000"
+            },
+            {
+              "id": 25,
+              "label": "5年",
+              "value": "java-5",
+              "data": "18000"
+            }
+          ]
+        }
+      ]
+    },
+    "age": {
+      "code": 200,
+      "msg": "年龄分布信息获取成功",
+      "data": [
+        {
+          "id": 1,
+          "label": "0-18岁",
+          "value": "18",
+          "data": "0"
+        },
+        {
+          "id": 2,
+          "label": "18-29岁",
+          "value": "28",
+          "data": "60"
+        },
+        {
+          "id": 3,
+          "label": "30-39岁",
+          "value": "38",
+          "data": "20"
+        },
+        {
+          "id": 4,
+          "label": "39-49岁",
+          "value": "48",
+          "data": "15"
+        },
+        {
+          "id": 5,
+          "label": "49岁以上",
+          "value": "49",
+          "data": "5"
+        }
+      ]
+    },
+    "region": {
+      "code": 200,
+      "msg": "地区分布信息获取成功",
+      "data": [
+        {
+          "id": 1,
+          "label": "北京",
+          "value": "beijing",
+          "data": "1000"
+        },
+        {
+          "id": 2,
+          "label": "上海",
+          "value": "shanghai",
+          "data": "850"
+        },
+        {
+          "id": 3,
+          "label": "广州",
+          "value": "guangzhou",
+          "data": "800"
+        },
+        {
+          "id": 4,
+          "label": "深圳",
+          "value": "shenzheng",
+          "data": "800"
+        },
+        {
+          "id": 5,
+          "label": "杭州",
+          "value": "hangzhou",
+          "data": "850"
+        },
+        {
+          "id": 6,
+          "label": "其他",
+          "value": "qita",
+          "data": "200"
+        }
+      ]
+    }
+  },
+  "large": {
+    "code": 200,
+    "msg": "大屏数据获取成功",
+    "data": {
+      "left": [
+        {
+          "id": 1,
+          "name": "各行业数量",
+          "location": "1-1",
+          "type": "bar",
+          "label": "industry",
+          "data": {
+            "title": "各行业数量",
+            "xAxis": {
+              "type": "category",
+              "data": ["旅游", "教育", "游戏", "医疗", "电商", "金融"]
+            },
+            "yAxis": {
+              "type": "value"
+            },
+            "series": {
+              "data": [200, 300, 100, 300, 500, 300]
+            }
+          }
+        },
+        {
+          "id": 2,
+          "name": "薪资幅度",
+          "location": "1-2",
+          "type": "line",
+          "label": "pay",
+          "data": {
+            "title": "薪资幅度",
+            "xAxis": {
+              "data": ["1年", "2年", "3年", "4年", "5年", "6年"]
+            },
+            "legend": {
+              "data": ["前端", "后端"]
+            },
+            "series": [
+              {
+                "name": "前端",
+                "data": ["8000", "12000", "14000", "15000", "18000", "20000"]
+              },
+              {
+                "name": "后端",
+                "data": ["8000", "10000", "12000", "15000", "20000", "24000"]
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "name": "年龄分布",
+          "location": "2-1",
+          "type": "pie",
+          "label": "age",
+          "data": {
+            "title": {
+              "text": "年龄分布"
+            },
+            "series": [
+              {
+                "name": "年龄分布",
+                "type": "pie",
+                "radius": ["30%", "60%"],
+                "avoidLabelOverlap": false,
+                "itemStyle": {
+                  "borderRadius": 10,
+                  "borderWidth": 2
+                },
+                "data": [
+                  {
+                    "value": 50,
+                    "name": "0-18岁"
+                  },
+                  {
+                    "value": 600,
+                    "name": "18-29岁"
+                  },
+                  {
+                    "value": 200,
+                    "name": "30-39岁"
+                  },
+                  {
+                    "value": 150,
+                    "name": "39-49岁"
+                  },
+                  {
+                    "value": 50,
+                    "name": "49岁以上"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "center": [],
+      "right": [
+        {
+          "id": 1,
+          "name": "开发技能",
+          "location": "1-1",
+          "type": "bar",
+          "label": "industry",
+          "data": {
+            "title": "开发技能",
+            "right": "0",
+            "xAxis": {
+              "type": "value"
+            },
+            "yAxis": {
+              "type": "category",
+              "data": ["JavaScript", "Java", "Python", "Go", "C", "C++", "C#", "PHP"]
+            },
+            "series": {
+              "data": [700, 800, 1000, 500, 900, 850, 750, 600]
+            }
+          }
+        },
+        {
+          "id": 2,
+          "name": "岗位需求",
+          "location": "2-1",
+          "type": "bar",
+          "label": "industry",
+          "data": {
+            "title": "岗位需求",
+            "right": "0",
+            "xAxis": {
+              "type": "category",
+              "data": ["前端", "后端", "安卓", "IOS", "实施", "运维", "测试"]
+            },
+            "yAxis": {
+              "type": "value"
+            },
+            "series": {
+              "data": [200, 300, 100, 300, 500, 300, 200]
+            }
+          }
+        },
+        {
+          "id": 3,
+          "name": "各地区占比",
+          "location": "2-2",
+          "type": "pie",
+          "label": "region",
+          "data": {
+            "title": {
+              "text": "各地区占比"
+            },
+            "right": "0",
+            "series": [
+              {
+                "name": "各地区占比",
+                "type": "pie",
+                "radius": [1, 50],
+                "center": ["50%", "50%"],
+                "roseType": "area",
+                "itemStyle": {
+                  "borderRadius": 8
+                },
+                "data": [
+                  { "value": 1000, "name": "北京" },
+                  { "value": 800, "name": "上海" },
+                  { "value": 850, "name": "杭州" },
+                  { "value": 800, "name": "广州" },
+                  { "value": 800, "name": "深圳" },
+                  { "value": 200, "name": "其他" }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

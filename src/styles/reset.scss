@@ -19,8 +19,10 @@ body {
 body {
   font-size: 14px;
   color: #333;
-  // background: url(@/assets/images/bg.png);
-  // background-size: 100% 100%;
+  background: url(@/assets/images/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   padding-right: 0px !important;
 }
 

@@ -5,7 +5,9 @@ import errorCode from './errorCode'
 import { ElMessage } from 'element-plus'
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://localhost:5173/api',
+  // baseURL: 'http://localhost:5173/api',
+  // baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:7768',
   timeout: 30000
 })
 // 请求拦截
@@ -27,9 +29,8 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const res = response.data,
-      code = res.code,
+      code = res.code || 200,
       msg = errorCode[code] || res.msg || res['default']
-
     if (code === 500) {
       ElMessage({
         message: msg || 'Error',
@@ -47,7 +48,7 @@ service.interceptors.response.use(
       })
       return Promise.reject('Error')
     }
-    return response
+    return res
   },
   (error) => {
     // 错误统一处理

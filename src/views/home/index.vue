@@ -1,70 +1,81 @@
 <template>
-  <div class="home-container pub-flex">
-    <!-- 三列布局 -->
-    <div class="home-left">
-      <cathet-view :cathetData="chartLeft"></cathet-view>
-    </div>
-    <div class="home-middle">
-      <middle-view></middle-view>
-    </div>
-    <div class="home-right">
-      <cathet-view :cathetData="chartRight"></cathet-view>
+  <div class="maxWH">
+    <div ref="screenRef" class="home-container">
+      <div class="home-top">
+        <head-view></head-view>
+      </div>
+      <div class="home-main maxWH pub-flex">
+        <!-- 三列布局 -->
+        <div class="home-left">
+          <cathet-view :cathetData="chartLeft" :site="'left'"></cathet-view>
+        </div>
+        <div class="home-middle">
+          <middle-view></middle-view>
+        </div>
+        <div class="home-right">
+          <cathet-view :cathetData="chartRight" :site="'right'"></cathet-view>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, markRaw } from 'vue'
 import cathetView from './components/cathet/index.vue'
 import middleView from './components/middle/index.vue'
+import headView from './components/header/index.vue'
 
-import DTOchartData from '@/mock/table.json'
+import { getReport } from '@/apis/report/index.js'
 
-// 开启缩放功能
-import { useResize } from '@/hooks/resize/index'
-useResize()
+// 开启适配
+import { useResize } from '@/hooks/viewportResize/index.js'
+const { screenRef } = markRaw(useResize())
 
 const chartLeft = ref([])
 const chartRight = ref([])
 
-const getChartData = () => {
-  const { code, data } = DTOchartData
-  if (code === 200) {
-    chartLeft.value = data[0].tchildren
-    chartRight.value = data[2].tchildren
-  }
+const getReportData = () => {
+  getReport().then((res) => {
+    if (res.code === 200) {
+      chartLeft.value = res.data.left
+      chartRight.value = res.data.right
+    }
+  })
 }
-getChartData()
 onMounted(() => {
   // 获取图表数据
+  getReportData()
 })
 </script>
 
 <style lang="scss">
+.maxWH {
+  width: 100%;
+  height: 100%;
+}
 .pub-flex {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .home-container {
-  height: 100%;
-  width: 100%;
-  background: url(../../assets/images/bg.png);
-  background-size: 100% 100%;
-  .home-left {
-    width: 100%;
-    height: 100%;
-    flex: 0.3;
-  }
-  .home-middle {
-    width: 100%;
-    height: 100%;
-    flex: 0.4;
-  }
-  .home-right {
-    width: 100%;
-    height: 100%;
-    flex: 0.3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-origin: left top;
+  .home-main {
+    height: calc(100% - 50px);
+    .home-left {
+      flex: 1;
+      height: 100%;
+    }
+    .home-middle {
+      width: 50%;
+      height: 100%;
+    }
+    .home-right {
+      flex: 1;
+      height: 100%;
+    }
   }
 }
 </style>

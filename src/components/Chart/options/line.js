@@ -1,6 +1,7 @@
+/* 
+  options： 可自行配置传参
+*/
 const lineConfig = (options) => {
-  console.log('line-options', options)
-
   const formatSeries = (series) => {
     if (Array.isArray(series)) {
       let formatSeries = series.map((item) => {
@@ -18,10 +19,11 @@ const lineConfig = (options) => {
   const defaultConfig = {
     title: {
       text: options.title,
+      right: options.right && '0px',
       textStyle: {
         color: '#fff',
         fontWeight: '500',
-        fontSize: 20
+        fontSize: 14
       }
     },
     tooltip: {
@@ -30,10 +32,16 @@ const lineConfig = (options) => {
     legend: {
       textStyle: {
         fontStyle: 500,
-        fontSize: 18,
+        fontSize: 14,
         color: '#fff'
       },
       data: options.legend?.data
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
     xAxis: {
       type: 'category',

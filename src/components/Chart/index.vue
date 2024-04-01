@@ -2,7 +2,7 @@
  * @Author: elk 
  * @Date: 2024-03-20 21:05:51
  * @LastEditors: elk LYF_elk@163.com
- * @LastEditTime: 2024-03-25 16:28:25
+ * @LastEditTime: 2024-03-29 14:48:33
  * @FilePath: /vue-BigScreen/src/components/Chart/index.vue
  * @Description:echart组件的封装
 -->
@@ -41,12 +41,10 @@ const props = defineProps({
   }
 })
 
-// console.log('props', props.chartOption)
 /* 监听数据变化 */
 watch(
   () => props.chartOption,
-  (newVal, oldVal) => {
-    console.log('newVal', newVal)
+  (newVal) => {
     setOptions(newVal)
   }
 )

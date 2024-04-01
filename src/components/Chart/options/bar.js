@@ -1,11 +1,16 @@
+/* 
+  options： 可自行配置传参
+*/
 const barConfig = (options) => {
   const defaultConfig = {
     title: {
       text: options.title,
+      right: options.right && '0px',
+      top: '0px',
       textStyle: {
         color: '#fff',
-        fontWeight: '500',
-        fontSize: 20
+        fontWeight: '400',
+        fontSize: 14
       }
     },
     tooltip: {
@@ -14,18 +19,20 @@ const barConfig = (options) => {
         type: 'shadow'
       },
       formatter: function (params) {
-        console.log('params', params)
+        // console.log('params', params)
         var tar = params[0]
         return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value
       }
     },
-    xAxis: {
-      type: 'category',
-      data: options.xAxis.data
+    grid: {
+      top: '20%',
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
-    yAxis: {
-      type: 'value'
-    },
+    xAxis: options.xAxis,
+    yAxis: options.yAxis,
     series: [
       {
         name: '人数',
