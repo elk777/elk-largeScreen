@@ -2,9 +2,9 @@
  * @Author: elk LYF_elk@163.com
  * @Date: 2024-03-21 10:33:02
  * @LastEditors: elk LYF_elk@163.com
- * @LastEditTime: 2024-03-29 14:41:31
+ * @LastEditTime: 2024-04-01 15:29:08
  * @FilePath: /vue-BigScreen/src/components/config.js
- * @Description: echarts的组件和配置统一管理
+ * @Description: echarts的图表和组件统一管理
  */
 import * as echarts from 'echarts/core'
 // 按需引入图表
@@ -47,5 +47,4 @@ echarts.use([
   UniversalTransition,
   CanvasRenderer
 ])
-
 export default echarts

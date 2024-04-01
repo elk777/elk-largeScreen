@@ -30,7 +30,7 @@ import { getReport } from '@/apis/report/index.js'
 
 // 开启适配
 import { useResize } from '@/hooks/viewportResize/index.js'
-const { screenRef } = markRaw(useResize())
+const { screenRef } = useResize()
 
 const chartLeft = ref([])
 const chartRight = ref([])
@@ -63,7 +63,7 @@ onMounted(() => {
   left: 50%;
   transform-origin: left top;
   .home-main {
-    height: calc(100% - 50px);
+    height: calc(100% - 80px);
     .home-left {
       flex: 1;
       height: 100%;

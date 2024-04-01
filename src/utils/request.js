@@ -5,9 +5,7 @@ import errorCode from './errorCode'
 import { ElMessage } from 'element-plus'
 // 创建axios实例
 const service = axios.create({
-  // baseURL: 'http://localhost:5173/api',
-  // baseURL: 'http://localhost:3000',
-  baseURL: 'http://localhost:7768',
+  baseURL: 'http://localhost:7768', // 本地开启的json-server
   timeout: 30000
 })
 // 请求拦截

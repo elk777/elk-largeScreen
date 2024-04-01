@@ -33,20 +33,21 @@ onBeforeUnmount(() => {
 <style lang="scss">
 .head-container {
   position: relative;
-  line-height: 50px;
+  line-height: 80px;
   background-color: rgba(0, 0, 0, 0.23);
   color: #fff;
-  font-size: 22px;
+  font-size: 2rem;
   .title {
     text-align: center;
   }
   .date {
-    width: 250px;
+    width: 380px;
+    text-align: left;
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 12px;
+    font-size: 1.125rem;
     color: #aaa;
   }
 }
